@@ -1,7 +1,18 @@
 # webflux-rsocket-example
-An example of building Spring WebFlux services using RSocket as the communication protocol.
+An example of building Spring WebFlux services using [RSocket](http://www.rsocket.io) as the communication protocol.
 
 The example exposes two RSocket services via Spring WebFlux and streams random letter and number data to a web broswer via SSE streaming.
+
+## Projects
+The example contains the following projects:
+
+* [client](/client) - REST API that calls the letter and number backend RSocket services.
+
+* [model](/model) - Domain model shared among the services.
+
+* [letter-service](/letter-service) - RSocket service that generates random letters.
+
+* [number-service](/number-service) - RSocket service that generates random numbers.
 
 ## Building the Example
 Run the following command to build the example:
