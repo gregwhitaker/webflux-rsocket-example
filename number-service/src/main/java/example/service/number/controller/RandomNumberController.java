@@ -27,7 +27,7 @@ public class RandomNumberController {
      */
     @MessageMapping("randomNumber")
     public Mono<NumberResponse> randomNumber() {
-        return Mono.fromSupplier(() -> new NumberResponse(RAND.nextInt()));
+        return Mono.fromSupplier(() -> new NumberResponse(RAND.nextInt(100 - 1 + 1) + 1));
     }
 
     /**
@@ -39,7 +39,7 @@ public class RandomNumberController {
     public Flux<NumberResponse> randomNumbers(NumberRequest numberRequest) {
         return Flux.range(1, numberRequest.getNumberOfNumbers())
                 .map(i -> {
-                    int num = RAND.nextInt();
+                    int num = RAND.nextInt(100 - 1 + 1) + 1;
 
                     LOG.info("Generated Number: {}", num);
 

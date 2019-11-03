@@ -24,6 +24,7 @@ public class ClientController {
     public RSocketRequester numberRSocketRequester;
 
     /**
+     * Get a stream of random letters.
      *
      * @return
      */
@@ -38,7 +39,7 @@ public class ClientController {
     }
 
     /**
-     *
+     * Get a stream of random numbers.
      * @return
      */
     @GetMapping(value = "/numbers",
@@ -52,6 +53,7 @@ public class ClientController {
     }
 
     /**
+     * Get a stream of random letters and numbers.
      *
      * @return
      */
