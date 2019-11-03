@@ -1,4 +1,28 @@
 # webflux-rsocket-example
+An example of building Spring WebFlux services using RSocket as the communication protocol.
+
+## Building the Example
+Run the following command to build the example:
+
+    ./gradlew clean build
+    
+## Running the Example
+Follow the steps below to run the example:
+
+1. Run the following command to start the `letter-service`:
+
+        ./gradlew :letter-service:bootRun
+
+2. In a new terminal, run the following command to start the `number-service`:
+
+        ./gradlew :number-service:bootRun
+        
+3. In a new terminal, run the following command to start the `client`:
+
+        ./gradlew :client:bootRun
+
+## Bugs and Feedback
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/webflux-rsocket-example/issues).
 
 ## License
 MIT License
