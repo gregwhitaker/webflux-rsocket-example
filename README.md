@@ -1,6 +1,8 @@
 # webflux-rsocket-example
 An example of building Spring WebFlux services using RSocket as the communication protocol.
 
+The example exposes two RSocket services via Spring WebFlux and streams random letter and number data to a web broswer via SSE streaming.
+
 ## Building the Example
 Run the following command to build the example:
 
@@ -20,6 +22,14 @@ Follow the steps below to run the example:
 3. In a new terminal, run the following command to start the `client`:
 
         ./gradlew :client:bootRun
+        
+4. In a web browser, navigate to `http://localhost:8080/letters` to receive a stream of `10` random letters with a delay of one second.
+
+5. In a web browser, navigate to `http://localhost:8080/numbers` to receive a stream of `10` random numbers with a delay of one second.
+
+6. In a web browser, navigate to `http://localhost:8080/numbers?count=5` to receive a stream of `5` random numbers with a delay of one second.
+
+7. In a web browser, navigate to `http://localhost:8080/both` to receive a stream of `10` pairs of random letter and number combinations with a delay of one second.
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/webflux-rsocket-example/issues).
