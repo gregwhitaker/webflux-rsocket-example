@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+import java.time.Duration;
+
+/**
+ * Controller responsible for returning letters and numbers via SSE streams.
+ */
 @RestController
 public class ClientController {
 
@@ -26,7 +31,7 @@ public class ClientController {
     /**
      * Get a stream of random letters.
      *
-     * @return
+     * @return stream of random letters
      */
     @GetMapping(value = "/letters",
             produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -35,12 +40,14 @@ public class ClientController {
                 .data(new LetterRequest(count))
                 .retrieveFlux(LetterResponse.class);
 
-        return randomLetters.map(letterResponse -> new ClientResponse(Character.toString(letterResponse.getLetter())));
+        return randomLetters.map(letterResponse -> new ClientResponse(Character.toString(letterResponse.getLetter())))
+                .delayElements(Duration.ofSeconds(1));
     }
 
     /**
      * Get a stream of random numbers.
-     * @return
+     *
+     * @return stream of random numbers
      */
     @GetMapping(value = "/numbers",
                 produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -49,13 +56,14 @@ public class ClientController {
                 .data(new NumberRequest(count))
                 .retrieveFlux(NumberResponse.class);
 
-        return randomNumbers.map(numberResponse -> new ClientResponse(Integer.toString(numberResponse.getNumber())));
+        return randomNumbers.map(numberResponse -> new ClientResponse(Integer.toString(numberResponse.getNumber())))
+                .delayElements(Duration.ofSeconds(1));
     }
 
     /**
-     * Get a stream of random letters and numbers.
+     * Get a stream of random letters combined with numbers (i.e. a15, c4, d45)
      *
-     * @return
+     * @return stream of random letters combined with numbers
      */
     @GetMapping(value = "/both",
                 produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -68,6 +76,11 @@ public class ClientController {
                 .data(new NumberRequest(count))
                 .retrieveFlux(NumberResponse.class);
 
-        return null;
+        return Flux.zip(randomLetters, randomNumbers)
+                .map(objects -> {
+                    String value = objects.getT1().getLetter() + Integer.toString(objects.getT2().getNumber());
+                    return new ClientResponse(value);
+                })
+                .delayElements(Duration.ofSeconds(1));
     }
 }
