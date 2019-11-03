@@ -23,13 +23,13 @@ Follow the steps below to run the example:
 
         ./gradlew :client:bootRun
         
-4. In a web browser, navigate to `http://localhost:8080/letters` to receive a stream of `10` random letters with a delay of one second.
+4. In a web browser, navigate to [http://localhost:8080/letters](http://localhost:8080/letters) to receive a stream of `10` random letters with a delay of one second.
 
-5. In a web browser, navigate to `http://localhost:8080/numbers` to receive a stream of `10` random numbers with a delay of one second.
+5. In a web browser, navigate to [http://localhost:8080/numbers](http://localhost:8080/numbers) to receive a stream of `10` random numbers with a delay of one second.
 
-6. In a web browser, navigate to `http://localhost:8080/numbers?count=5` to receive a stream of `5` random numbers with a delay of one second.
+6. In a web browser, navigate to [http://localhost:8080/numbers?count=5](http://localhost:8080/numbers?count=5) to receive a stream of `5` random numbers with a delay of one second.
 
-7. In a web browser, navigate to `http://localhost:8080/both` to receive a stream of `10` pairs of random letter and number combinations with a delay of one second.
+7. In a web browser, navigate to [http://localhost:8080/both](http://localhost:8080/both) to receive a stream of `10` pairs of random letter and number combinations with a delay of one second.
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/webflux-rsocket-example/issues).
