@@ -1,0 +1,3 @@
+rootProject.name = 'webflux-rsocket-example'
+include 'model'
+
